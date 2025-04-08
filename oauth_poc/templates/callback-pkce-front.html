@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback-pkce-front</title>
+    <script>
+        (async function () {
+            let code = new URL(location).searchParams.get("code");
+            let codeVerifier = sessionStorage.getItem("codeVerifier");
+            let data = {
+                code: code,
+                code_verifier: codeVerifier
+            }
+
+            let response = await fetch('/callback-pkce-post', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            sessionStorage.removeItem("codeVerifier");
+
+            if (response.status == 200) {
+                location.href = "/pkce";
+            } else {
+                console.log("Error: " + response.status);
+            }
+        })();
+
+    </script>
+</head>
+
+<body></body>
+
+</html>

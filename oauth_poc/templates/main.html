@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <title>{{title or "Main page"}}</title>
+    <script src="static\script.js"></script>
+</head>
+
+<body>
+    <h1>{{ message }}</h1>
+    <pre>{{ user }}</pre>
+    <div>
+        <input type="button" onclick="{{ login_function }}()" value="Login" />
+
+    </div>
+    <br>
+    <div>
+        <input type="button" onclick="logout()" value="Logout" />
+    </div>
+    <br>
+    <div>
+        <input type="button" onclick="requestAPI()" value="API request" />
+    </div>
+    <br>
+    <pre id="api-response"></pre>
+    <div id="errors"></div>
+    <br>
+    <table>
+        <tr>
+            <td><a href="/main">main</a></td>
+            <td><a href="/pkce">pkce</a></td>
+            <td><a href="/pkce-back">pkce-back</a></td>
+            <td><a href="/form-post">form-post</a></td>
+        </tr>
+    </table>
+</body>
+
+</html>

