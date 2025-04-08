@@ -9,7 +9,7 @@ __pycache__/
 
 certs/
 
-/oauth_poc/config.py
+# /oauth_poc/config.py
 
 /attacker_poc/malicious-scripts
 
